@@ -57,26 +57,17 @@ architecture structural of gameLogic is
         );
     end component;
 
+    component inputDecoder
+        port(
+        internalWin:in std_logic;
+        inPort:in std_logic_vector(8 downto 0);
+        cellGame:in std_logic_vector(17 downto 0);
+        SqrSel:out std_logic_vector(8 downto 0);
+    );
+    end component;
 begin
 
     winState <= internalWin;
-
-    process(internalWin, inPort, cellGames)
-    begin
-        sqrSel <= (others => '0');
-        if internalWin = '0' then 
-            if    (inPort(6) = '1' and cellGames(16) = '0') then sqrSel(8) <= '1';
-            elsif (inPort(7) = '1' and cellGames(14) = '0') then sqrSel(7) <= '1';
-            elsif (inPort(8) = '1' and cellGames(12) = '0') then sqrSel(6) <= '1';
-            elsif (inPort(3) = '1' and cellGames(10) = '0') then sqrSel(5) <= '1';
-            elsif (inPort(4) = '1' and cellGames(8) = '0')  then sqrSel(4) <= '1';
-            elsif (inPort(5) = '1' and cellGames(6) = '0')  then sqrSel(3) <= '1';
-            elsif (inPort(0) = '1' and cellGames(4) = '0')  then sqrSel(2) <= '1';
-            elsif (inPort(1) = '1' and cellGames(2) = '0')  then sqrSel(1) <= '1';
-            elsif (inPort(2) = '1' and cellGames(0) = '0')  then sqrSel(0) <= '1';
-            end if;
-        end if;
-    end process;
      
     process(clk)
     begin
@@ -90,7 +81,12 @@ begin
             myIn   <= inPort;
         end if;
     end process;
-     
+    
+    INPUT_DEC :inputDecoder
+                port map(
+                    internalWin => internalWin,inport=>inport,cellGames=>cellGames,sqrSel=>sqrSel
+                );
+
     STATE_INST : gameState 
         port map (clk => clk, reset => reset, cellState => cellGames, winState => internalWin, colorCell => colorSig);
 
