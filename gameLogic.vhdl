@@ -61,7 +61,7 @@ architecture structural of gameLogic is
         port(
         internalWin:in std_logic;
         inPort:in std_logic_vector(8 downto 0);
-        cellGame:in std_logic_vector(17 downto 0);
+        cellGames:in std_logic_vector(17 downto 0);
         SqrSel:out std_logic_vector(8 downto 0);
     );
     end component;
