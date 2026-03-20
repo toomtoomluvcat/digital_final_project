@@ -1,0 +1,13 @@
+when 'M' => seg <= "1101010";  
+            when 'E' => seg <= "0000110";
+            when 'N' => seg <= "1001000";   
+            when 'U' => seg <= "1000001";
+            when 'H' => seg <= "0001001";
+            when 'A' => seg <= "0001000";
+            when 'P' => seg <= "0001100";
+            when 'W' => seg <= "1010101";  
+            when 'I' => seg <= "1111001";  
+            when '1' => seg <= "1111001";
+            when '2' => seg <= "0100100";
+            when '-' => seg <= "0111111";
+            when others => seg <= "1111111"; 

@@ -18,15 +18,15 @@ architecture Behavioral of inputDecoder is
 begin 
     
     active <=not internalWin;
-    c(8) <= inPort(6) and not (cellGames(17) or cellGames(16));
+    c(8) <= inPort(8) and not (cellGames(17) or cellGames(16));
     c(7) <= inPort(7) and not (cellGames(15) or cellGames(14));
-    c(6) <= inPort(8) and not (cellGames(13) or cellGames(12));
-    c(5) <= inPort(3) and not (cellGames(11) or cellGames(10));
+    c(6) <= inPort(6) and not (cellGames(13) or cellGames(12));
+    c(5) <= inPort(5) and not (cellGames(11) or cellGames(10));
     c(4) <= inPort(4) and not (cellGames(9) or cellGames(8));
-    c(3) <= inPort(5) and not (cellGames(7) or cellGames(6));
-    c(2) <= inPort(0) and not (cellGames(5) or cellGames(4));
+    c(3) <= inPort(3) and not (cellGames(7) or cellGames(6));
+    c(2) <= inPort(2) and not (cellGames(5) or cellGames(4));
     c(1) <= inPort(1) and not (cellGames(3) or cellGames(2));
-    c(0) <= inPort(2) and not (cellGames(1) or cellGames(0));
+    c(0) <= inPort(0) and not (cellGames(1) or cellGames(0));
 
     sqrSel(8) <= c(8) and active;
     p(8) <= not c(8);
